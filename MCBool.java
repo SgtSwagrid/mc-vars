@@ -40,4 +40,12 @@ public class MCBool extends MCVar {
     public boolean get() {
         return getValue(NAME) == 1;
     }
+    
+    @Override
+    public String toString() { return Boolean.toString(get()); }
+    
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof MCBool && ((MCBool) o).get() == get();
+    }
 }

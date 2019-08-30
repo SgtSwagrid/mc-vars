@@ -40,4 +40,12 @@ public class MCInt extends MCVar {
     public int get() {
         return getValue(NAME);
     }
+    
+    @Override
+    public String toString() { return Integer.toString(get()); }
+    
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof MCInt && ((MCInt) o).get() == get();
+    }
 }

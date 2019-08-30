@@ -40,4 +40,12 @@ public class MCChar extends MCVar {
     public char get() {
         return (char) getValue(NAME);
     }
+    
+    @Override
+    public String toString() { return Character.toString(get()); }
+    
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof MCChar && ((MCChar) o).get() == get();
+    }
 }

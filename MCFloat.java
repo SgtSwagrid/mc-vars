@@ -6,6 +6,9 @@ package factions.util;
  */
 public class MCFloat extends MCVar {
     
+    /** Tolerance for equality testing. */
+    private float TOLERANCE = 0.001F;
+    
     /**
      * Constructs a new float in the given table, with an initial value of 0.0.
      * @param table the table in which the variable should reside.
@@ -43,5 +46,14 @@ public class MCFloat extends MCVar {
     public float get() {
         float m = (float)getValue(NAME + "_m")/(Integer.MAX_VALUE/2);
         return m * (float)Math.pow(2, getValue(NAME + "_e"));
+    }
+    
+    @Override
+    public String toString() { return Float.toString(get()); }
+    
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof MCFloat && Math.abs(
+                ((MCFloat) o).get() - get()) < TOLERANCE;
     }
 }

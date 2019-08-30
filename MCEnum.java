@@ -51,4 +51,12 @@ public class MCEnum<T extends Enum<T>> extends MCVar {
     public T get() {
         return DOMAIN.get(getValue(NAME));
     }
+    
+    @Override
+    public String toString() { return get().toString(); }
+    
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof MCEnum && ((MCEnum<?>) o).get() == get();
+    }
 }
